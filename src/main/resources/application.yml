@@ -1,0 +1,34 @@
+server:
+  port: 8081
+  address: 127.0.0.1
+  servlet:
+    context-path: /
+
+#配置Mybatis
+mybatis:
+  type-aliases-package: cn.caitc.entity
+  mapper-locations: classpath:mapper/*.xml
+  configuration:
+    # 开启驼峰命名转换，如：Table(create_time) -> Entity(createTime)。不需要我们关心怎么进行字段匹配，mybatis会自动识别`大写字母与下划线`
+    map-underscore-to-camel-case: true
+
+# 连接oracle数据库
+spring:
+  datasource:
+    jdbc-url: jdbc:oracle:thin:@127.0.0.1:1521:orcl
+    username: family0410
+    password: family0410
+    driver-class-name: oracle.jdbc.driver.OracleDriver
+
+# 连接mysql数据库
+#spring:
+#  datasource:
+#    jdbc-url: jdbc:mysql://127.0.0.1:3306/daily_report?useUnicode=true&characterEncoding=utf-8&serverTimezone=UTC
+#    username: root
+#    password: root
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+
+#打印SQL日志
+logging:
+  level:
+    cn.caitc.mapper: DEBUG
