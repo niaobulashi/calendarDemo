@@ -126,60 +126,12 @@ public class CalendarServiceImpl implements CalendarService {
                 Tcalendar calendar = calendarMapper.selectByPrimaryKey(dateStr);
                 // 若存在
                 if (calendar != null) {
-                    // 判断接口返回的日期类型和数据中保存的是否一致，若不一致，则更新
-                    if (calendar.getcType().equals(object.get("type"))) {
-                        // 说明国家法定节假日有变化，之前存入的数据，需要变更
-                        cal.setcDate(dateStr);
-                        cal.setcType(object.getString("type"));
-                        cal.setcTypename(object.getString("typename"));
-                        cal.setcYearname(object.getString("yearname"));
-                        cal.setcNonglicn(object.getString("nonglicn"));
-                        cal.setcNongli(object.getString("nongli"));
-                        cal.setcAnimalsYear(object.getString("shengxiao"));
-                        cal.setcThrottle(object.getString("jieqi"));
-                        cal.setcWeekcn(object.getString("weekcn"));
-                        cal.setcWeek1(object.getString("week1"));
-                        cal.setcWeek2(object.getString("week2"));
-                        cal.setcWeek3(object.getString("week3"));
-                        cal.setcDaynum(object.getString("daynum"));
-                        cal.setcWeeknum(object.getString("weeknum"));
-                        if (object.containsKey("avoid")) {
-                            cal.setcAvoid(object.getString("avoid"));
-                        }
-                        if (object.containsKey("suit")) {
-                            cal.setcSuit(object.getString("suit"));
-                        }
-
-                        calendarMapper.updateByPrimaryKeySelective(cal);
-                    }
-
-                    //若为空，则直接新增日期
+                    // 更新日历信息
+                    updateCalendar(dateStr, cal, object);
                 } else {
-
-                    cal.setcDate(dateStr);
-                    cal.setcType(object.getString("type"));
-                    cal.setcTypename(object.getString("typename"));
-                    cal.setcYearname(object.getString("yearname"));
-                    cal.setcNonglicn(object.getString("nonglicn"));
-                    cal.setcNongli(object.getString("nongli"));
-                    cal.setcAnimalsYear(object.getString("shengxiao"));
-                    cal.setcThrottle(object.getString("jieqi"));
-                    cal.setcWeekcn(object.getString("weekcn"));
-                    cal.setcWeek1(object.getString("week1"));
-                    cal.setcWeek2(object.getString("week2"));
-                    cal.setcWeek3(object.getString("week3"));
-                    cal.setcDaynum(object.getString("daynum"));
-                    cal.setcWeeknum(object.getString("weeknum"));
-                    if (object.containsKey("avoid")) {
-                        cal.setcAvoid(object.getString("avoid"));
-                    }
-                    if (object.containsKey("suit")) {
-                        cal.setcSuit(object.getString("suit"));
-                    }
-
-                    calendarMapper.insertSelective(cal);
+                    // 新增日历信息
+                    insertCalendar(dateStr, cal, object);
                 }
-
             } else {
                 logger.info(object.get("success") + ":" + object.get("msg"));
             }
@@ -187,7 +139,67 @@ public class CalendarServiceImpl implements CalendarService {
             e.printStackTrace();
         }
     }
-
+    
+    /**
+     * 更新日历信息
+     * @param dateStr 日期
+     * @param cal Tcalendar
+     * @param object object
+     */
+    private void updateCalendar(String dateStr, Tcalendar cal, JSONObject object) {
+        cal.setcDate(dateStr);
+        cal.setcType(object.getString("type"));
+        cal.setcTypename(object.getString("typename"));
+        cal.setcYearname(object.getString("yearname"));
+        cal.setcNonglicn(object.getString("nonglicn"));
+        cal.setcNongli(object.getString("nongli"));
+        cal.setcAnimalsYear(object.getString("shengxiao"));
+        cal.setcThrottle(object.getString("jieqi"));
+        cal.setcWeekcn(object.getString("weekcn"));
+        cal.setcWeek1(object.getString("week1"));
+        cal.setcWeek2(object.getString("week2"));
+        cal.setcWeek3(object.getString("week3"));
+        cal.setcDaynum(object.getString("daynum"));
+        cal.setcWeeknum(object.getString("weeknum"));
+        if (object.containsKey("avoid")) {
+            cal.setcAvoid(object.getString("avoid"));
+        }
+        if (object.containsKey("suit")) {
+            cal.setcSuit(object.getString("suit"));
+        }
+        calendarMapper.updateByPrimaryKeySelective(cal);
+    }
+    
+    /**
+     * 新增日历信息
+     * @param dateStr 日期
+     * @param cal Tcalendar
+     * @param object object
+     */
+    private void insertCalendar(String dateStr, Tcalendar cal, JSONObject object) {
+        cal.setcDate(dateStr);
+        cal.setcType(object.getString("type"));
+        cal.setcTypename(object.getString("typename"));
+        cal.setcYearname(object.getString("yearname"));
+        cal.setcNonglicn(object.getString("nonglicn"));
+        cal.setcNongli(object.getString("nongli"));
+        cal.setcAnimalsYear(object.getString("shengxiao"));
+        cal.setcThrottle(object.getString("jieqi"));
+        cal.setcWeekcn(object.getString("weekcn"));
+        cal.setcWeek1(object.getString("week1"));
+        cal.setcWeek2(object.getString("week2"));
+        cal.setcWeek3(object.getString("week3"));
+        cal.setcDaynum(object.getString("daynum"));
+        cal.setcWeeknum(object.getString("weeknum"));
+        if (object.containsKey("avoid")) {
+            cal.setcAvoid(object.getString("avoid"));
+        }
+        if (object.containsKey("suit")) {
+            cal.setcSuit(object.getString("suit"));
+        }
+        calendarMapper.insertSelective(cal);
+    }
+    
     /**
      * 发送请求
      * @param strUrl 请求地址
@@ -258,6 +270,12 @@ public class CalendarServiceImpl implements CalendarService {
             }
         }
         return sb.toString();
+    }
+    
+    public static void main(String[] args) {
+        String a = "1";
+        String[] b = a.split("\\|");
+        System.out.println(b[0]);
     }
 }
 

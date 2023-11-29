@@ -17,7 +17,7 @@ spring:
   datasource:
     jdbc-url: jdbc:oracle:thin:@127.0.0.1:1521:orcl
     username: family0410
-    password: family0410
+    password: family
     driver-class-name: oracle.jdbc.driver.OracleDriver
 
 # 连接mysql数据库
