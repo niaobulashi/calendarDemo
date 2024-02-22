@@ -41,7 +41,7 @@ class DemoApplicationTests {
          * @param endStr    结束日期
          * 获取的数据为20191130-20191201两天数据
          */
-        calendarService.saveCalendar("20240802", "20240901");
+        calendarService.saveCalendar("20241202", "20241231");
     }
 
     @Test

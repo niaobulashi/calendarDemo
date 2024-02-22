@@ -15,8 +15,8 @@ mybatis:
 # 连接oracle数据库
 spring:
   datasource:
-    jdbc-url: jdbc:oracle:thin:@127.0.0.1:1521:orcl
-    username: family0410
+    jdbc-url: jdbc:oracle:thin:@10.128.202.194:1521:db
+    username: family
     password: family
     driver-class-name: oracle.jdbc.driver.OracleDriver
 

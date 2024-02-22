@@ -3,7 +3,10 @@ package cn.caitc.service.impl;
 import cn.caitc.entity.Tcalendar;
 import cn.caitc.mapper.TcalendarMapper;
 import cn.caitc.service.CalendarService;
+import cn.hutool.http.HttpRequest;
+import cn.hutool.http.HttpResponse;
 import net.sf.json.JSONObject;
+import okhttp3.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -272,10 +275,7 @@ public class CalendarServiceImpl implements CalendarService {
         return sb.toString();
     }
     
-    public static void main(String[] args) {
-        String a = "1";
-        String[] b = a.split("\\|");
-        System.out.println(b[0]);
-    }
+
+
 }
 

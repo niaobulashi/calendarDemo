@@ -98,16 +98,6 @@
             <version>2.3.30</version>
         </dependency>
 
-
-        <!--oracle数据库-->
-        <!--<dependency>
-            <groupId>com.oracle</groupId>
-            <artifactId>ojdbc6</artifactId>
-            <version>11.2.0.3</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/src/main/resources/lib/ojdbc6-11.2.0.3.jar</systemPath>
-        </dependency>-->
-
         <dependency>
             <groupId>com.oracle.ojdbc</groupId>
             <artifactId>ojdbc8</artifactId>
@@ -119,14 +109,26 @@
             <version>12.1.0.2.0</version>
         </dependency>
 
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
+            <version>5.7.17</version> <!-- 请根据实际情况选择最新版本 -->
+        </dependency>
 
-        <!--
-                <dependency>
-                    <groupId>com.oracle.database.jdbc</groupId>
-                    <artifactId>ojdbc8</artifactId>
-                    <version>12.2.0.1</version>
-                </dependency>
-        -->
+        <!-- https://mvnrepository.com/artifact/com.squareup.okhttp3/okhttp -->
+        <dependency>
+            <groupId>com.squareup.okhttp3</groupId>
+            <artifactId>okhttp</artifactId>
+            <version>4.10.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>4.5.13</version>
+        </dependency>
+
+
 
     </dependencies>
 
